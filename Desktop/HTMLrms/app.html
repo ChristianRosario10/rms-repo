@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rod Machine Shop</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+    <style>
+        .hover-underline:hover {
+            text-decoration: underline !important;
+        }
+        #a { display: block; }
+        #b { display: none; }
+        .logo-placement {
+            display: flex;
+            align-items: center;
+        }
+        .nav-link {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 40px;
+            margin-right: 20px;
+        }
+        .nav-link.active {
+            color: #000;
+        }
+        .nav-link.btn {
+            background: none;
+            border: none;
+            padding: 0;
+        }
+        .nav-link.btn:hover {
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
+        <div class="container-fluid">
+            <div class="d-flex align-items-center logo-placement">
+                <img
+                    src="img/ROD.png"
+                    alt="Logo"
+                    class="me-3"
+                    style="width: 90px; height: 90px; border-radius: 50%"
+                />
+                <div>
+                    <div class="navbar-brand" id="a">
+                        <b>Rod Machine Shop</b>
+                    </div>
+                    <div class="navbar-brand" id="b" style="display: none;">
+                        ROD MACHINE SHOP
+                    </div>
+                    <hr style="margin: 0; border-color: #FF0000;" />
+                    <small>Precision in Every Cut, Excellence in Every Part</small>
+                </div>
+            </div>
+            <button
+                class="navbar-toggler"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#navbarNav"
+                aria-controls="navbarNav"
+                aria-expanded="false"
+                aria-label="Toggle navigation"
+            >
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a href="home.html" class="nav-link active">HOME</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="book-here.html" class="nav-link" style="color: red;">BOOK HERE</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="about.html" class="nav-link">ABOUT US</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="goals.html" class="nav-link">OUR GOALS</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Content -->
+    <div class="container-fluid">
+        <!-- Content will be loaded here via iframe or direct content -->
+        <iframe id="contentFrame" style="width: 100%; height: 100vh; border: none;"></iframe>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container py-5">
+            <div class="row">
+                <hr />
+                <div class="col-lg-12 col-md-12">
+                    <h2 class="mb-4">Contact Information</h2>
+                    <p>If you have any questions or inquiries, feel free to reach out to us. We're here to help!</p>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><i class="bi bi-envelope"></i> Email: <a href="mailto:rodmachineshop@gmail.com" class="text-decoration-none text-dark hover-underline">rodmachineshop@gmail.com</a></li>
+                        <li class="mb-2"><i class="bi bi-telephone"></i> Phone: <a href="tel:+639456718005" class="text-decoration-none text-dark hover-underline">+63 945 671 8005</a></li>
+                        <li class="mb-2"><i class="bi bi-geo-alt"></i> Address: Barangonbong, Sta Lucia Ilocos Sur</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid p-5" style="background-image: url('img/bg_f.jpg'); background-size: cover; background-repeat: no-repeat; background-position: center; color: #ffffff;">
+            <img src="img/ROD.png" alt="Logo" class="img-fluid mb-3" style="width: 150px; height: 150px; border-radius: 80px;" />
+            <div class="row">
+                <div class="col-lg-6 col-md-12 mb-4">
+                    <h3 class="text-uppercase">
+                        ROD MACHINE SHOP <br /> <h6>Committed to Excellence in Service.</h6>
+                    </h3>
+                    <p class="tex-justify" style="font-family: 'Bebas neue';">
+                        <strong class="text-danger" style="font-family: 'Bebas neue';">At ROD Machine Shop</strong>, we take pride in delivering top-quality machining solutions with precision and reliability. With a commitment to excellence, we offer expert craftsmanship, advanced technology, and exceptional customer service to meet your manufacturing and repair needs. Whether it's custom machining, metal fabrication, or equipment repair, we ensure superior results with every project.
+                    </p>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <h5 class="text-uppercase mb-0">Social link</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#" class="text-decoration-none text-light hover-underline"><i class="ri-facebook-line"></i> Facebook</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <h5 class="text-uppercase mb-0">Email</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="mailto:rodmachineshop@gmail.com" class="text-decoration-none text-light hover-underline"><i class="ri-mail-line"></i> rodmachineshop@gmail.com</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row mt-4">
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <h5 class="text-uppercase">Learn more about Machine Shops</h5>
+                    <ul class="list-unstyled mb-0">
+                        <li><a href="https://www.practicalmachinist.com/" class="text-decoration-none text-light hover-underline">practicalmachinist</a></li>
+                        <li><a href="https://www.pinayads.com/2025/01/the-core-of-manufacturing-an-essential-guide-to-machine-shops/" class="text-decoration-none text-light hover-underline">pinayads</a></li>
+                        <li><a href="https://www.mmsonline.com/" class="text-decoration-none text-light hover-underline">mmsonline</a></li>
+                        <li><a href="https://www.machinistsworkshop.com/" class="text-decoration-none text-light hover-underline">Machinist's Workshop</a></li>
+                        <li><a href="https://www.thomasnet.com/" class="text-decoration-none text-light hover-underline">ThomasNet</a></li>
+                        <li><a href="https://www.haascnc.com/" class="text-decoration-none text-light hover-underline">Haas Automation</a></li>
+                        <li><a href="https://www.machiningdoctor.com/" class="text-decoration-none text-light hover-underline">machiningdoctor</a></li>
+                        <li><a href="https://www.machineshoptours.com/" class="text-decoration-none text-light hover-underline">machineshoptours</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <h5 class="text-uppercase mb-0">Rod Machine shop Team</h5>
+                    <ul class="list-unstyled">
+                        <li><a class="text-decoration-none text-light hover-underline">Rodrigo Rosario</a></li>
+                        <li><a class="text-decoration-none text-light hover-underline">Drixel Rosario</a></li>
+                        <li><a class="text-decoration-none text-light hover-underline">Mark Palacio</a></li>
+                        <li><a class="text-decoration-none text-light hover-underline">Myco Galus</a></li>
+                        <li><a class="text-decoration-none text-light hover-underline">Roger Dailioan</a></li>
+                        <li><a class="text-decoration-none text-light hover-underline">Jun Soliman</a></li>
+                        <li><a class="text-decoration-none text-light hover-underline">Frederick Sumacli</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <h5 class="text-uppercase mb-0 text-danger">About the developer</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#" class="text-decoration-none text-light hover-underline">here...</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="footer text-center py-4">
+            <p class="m-0">© 2025 chan-chan R. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Set initial content to home page
+        document.getElementById('contentFrame').src = 'home.html';
+
+        // Handle navigation
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const href = this.getAttribute('href');
+                document.getElementById('contentFrame').src = href;
+                
+                // Update active state
+                document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
+                this.classList.add('active');
+            });
+        });
+    </script>
+</body>
+</html> 

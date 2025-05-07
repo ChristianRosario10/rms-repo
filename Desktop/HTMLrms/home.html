@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rod Machine Shop - Home</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .banner {
+            position: relative;
+            height: 83.5vh;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .tableContainer {
+            margin-top: 30px;
+            padding: 20px;
+            background-color: #f8f9fa;
+            border-radius: 10px;
+        }
+        .table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: left;
+        }
+        th {
+            background-color: #343a40;
+            color: white;
+            padding: 10px;
+        }
+        td {
+            padding: 10px;
+            border-bottom: 1px solid #ddd;
+        }
+    </style>
+</head>
+<body>
+    <!-- Banner Section -->
+    <div class="banner">
+        <video autoplay loop muted class="video">
+            <source src="img/vid.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </div>
+
+    <!-- Sub-Banner -->
+    <div class="container py-5">
+        <div class="row mb-4">
+            <div class="col-md-6">
+                <h1 class="text-start mt-sm-5">Company Updates</h1>
+            </div>
+            <div class="col-md-6">
+                <div class="company-info p-3 bg-light rounded">
+                    <div class="placeholder-container p-4 text-center">
+                        <p>Rod Machine Shop - Quality precision machining services</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <hr>
+        <h1 class="text-start">Welcome!</h1>
+
+        <div class="row">
+            <div class="col-md-6 mb-3">
+                <img src="img/subpic1.jpg" class="img-fluid rounded" alt="Sub Banner">
+            </div>
+
+            <div class="col-md-6">
+                <h2>Attention All Aspiring Customers!</h2>
+                <p class="text-justify" style="font-family: 'Barlow Semi Condensed', sans-serif;">
+                    Are you searching for a trusted partner to bring your ideas to life? Whether you're an entrepreneur launching a new product, an engineer designing innovative components, or a business owner scaling operations, we're here to help turn your vision into reality.
+                </p>
+
+                <p class="text-justify" style="font-family: 'Barlow Semi Condensed', sans-serif;">
+                    At Rod Machine Shop, we specialize in delivering precision-engineered parts tailored to your exact specifications. With state-of-the-art equipment, decades of industry experience, and a passion for excellence, we ensure every project meets the highest standards of quality and reliability.
+                </p>
+
+                <h2 class="text-justify">Why Choose Us?</h2>
+                <p class="text-justify" style="font-family: 'Barlow Semi Condensed', sans-serif;">
+                    <strong>Custom Solutions:</strong> From prototypes to full-scale production runs, we adapt to your unique needs.<br>
+                    <strong>Unmatched Precision:</strong> Our advanced machining capabilities guarantee tight tolerances and flawless finishes.<br>
+                    <strong>Fast Turnaround:</strong> We understand deadlines matter, so we prioritize efficiency without compromising quality.<br>
+                    <strong>Personalized Service:</strong> You're more than just a customer – you're part of our journey to success.
+                </p>
+
+                <hr>
+                <h3>Quick Links</h3>
+                <ul class="list-unstyled">
+                    <li><a href="#" class="text-decoration-none">Direct message the owner here...</a></li>
+                    <li><a href="#" class="text-decoration-none">How It Works</a></li>
+                    <li><a href="#" class="text-decoration-none">Meet Our Team</a></li>
+                    <li><a href="#" class="text-decoration-none">Follow Us on Facebook</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- SERVICES TABLE -->
+    <section id="services">
+        <div class="container tableContainer">
+            <h2 class="text-center mb-4">Top Services</h2>
+            <table class="table table-striped table-bordered">
+                <thead>
+                    <tr>
+                        <th>Number</th>
+                        <th>Service</th>
+                        <th>Description</th>
+                        <th>Price</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>CNC Machining</td>
+                        <td>Precision cutting, drilling, and milling using CNC machines.</td>
+                        <td>₱1,500 per hour</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>Metal Fabrication</td>
+                        <td>Custom metalwork including cutting, bending, and welding.</td>
+                        <td>₱800 per project</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>Lathe Machining</td>
+                        <td>Turning and shaping metal parts with high accuracy.</td>
+                        <td>₱1,200 per hour</td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td>Milling Services</td>
+                        <td>Milling for precision parts and components.</td>
+                        <td>₱1,000 per hour</td>
+                    </tr>
+                    <tr>
+                        <td>5</td>
+                        <td>Welding & Repairs</td>
+                        <td>Welding services for repairs and fabrication projects.</td>
+                        <td>₱600 per hour</td>
+                    </tr>
+                    <tr>
+                        <td>6</td>
+                        <td>Cutting</td>
+                        <td>Precision cutting for various materials.</td>
+                        <td>₱2,000 per sheet</td>
+                    </tr>
+                    <tr>
+                        <td>7</td>
+                        <td>Grinding & Polishing</td>
+                        <td>Surface finishing for metal and alloy parts.</td>
+                        <td>₱700 per piece</td>
+                    </tr>
+                    <tr>
+                        <td>8</td>
+                        <td>Sheet Metal Bending</td>
+                        <td>Custom sheet metal bending for industrial needs.</td>
+                        <td>₱900 per project</td>
+                    </tr>
+                    <tr>
+                        <td>9</td>
+                        <td>Drilling & Tapping</td>
+                        <td>Precision hole drilling and thread tapping.</td>
+                        <td>₱500 per piece</td>
+                    </tr>
+                    <tr>
+                        <td>10</td>
+                        <td>Customatizing Parts</td>
+                        <td>Making and custom parts manufacturing.</td>
+                        <td>₱3,500 per design</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+</body>
+</html> 
