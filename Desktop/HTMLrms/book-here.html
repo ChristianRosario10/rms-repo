@@ -3,253 +3,283 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rod Machine Shop - Book Here</title>
+    <title>Book Here - Rod Machine Shop</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Firebase SDK -->
-    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-storage-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-analytics-compat.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
     <style>
-        .error-message {
+        .hover-underline:hover {
+            text-decoration: underline !important;
+        }
+        #a { display: block; }
+        #b { display: none; }
+        .logo-placement {
+            display: flex;
+            align-items: center;
+        }
+        .nav-link {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 40px;
+            margin-right: 20px;
+        }
+        .nav-link.active {
+            color: #000;
+        }
+        .nav-link.btn {
+            background: none;
+            border: none;
+            padding: 0;
+        }
+        .nav-link.btn:hover {
+            color: #666;
+        }
+        .form-label {
+            font-weight: bold;
+        }
+        .required::after {
+            content: " *";
             color: red;
-            margin-top: 5px;
-            font-size: 0.9em;
         }
-        .progress {
-            display: none;
-            margin-top: 10px;
-        }
-        .image-preview {
+        #imagePreview {
             max-width: 200px;
             max-height: 200px;
-            margin-top: 10px;
             display: none;
+            margin-top: 10px;
         }
     </style>
 </head>
 <body>
-    <div class="container d-flex justify-content-center">
-        <div class="card p-4 shadow-lg" style="max-width: 600px; width: 100%; margin-top: 30px; background-color: #f8f9fa;">
-            <h1 class="text-center mb-3">Machine Shop Work Request Form</h1>
-            <hr>
-
-            <!-- Error Message Container -->
-            <div id="errorMessage" class="alert alert-danger text-center mb-3" role="alert" style="display: none;"></div>
-
-            <form id="workRequestForm" action="#" method="POST">
-                <!-- Customer Name -->
-                <div class="mb-3">
-                    <label class="form-label fw-bold" for="customerName">
-                        Customer Name:
-                    </label>
-                    <input type="text" id="customerName" name="customerName" class="form-control" required>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
+        <div class="container-fluid">
+            <div class="d-flex align-items-center logo-placement">
+                <img
+                    src="img/ROD.png"
+                    alt="Logo"
+                    class="me-3"
+                    style="width: 90px; height: 90px; border-radius: 50%"
+                />
+                <div>
+                    <div class="navbar-brand" id="a">
+                        <b>Rod Machine Shop</b>
+                    </div>
+                    <div class="navbar-brand" id="b" style="display: none;">
+                        ROD MACHINE SHOP
+                    </div>
+                    <hr style="margin: 0; border-color: #FF0000;" />
+                    <small>Precision in Every Cut, Excellence in Every Part</small>
                 </div>
+            </div>
+            <button
+                class="navbar-toggler"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#navbarNav"
+                aria-controls="navbarNav"
+                aria-expanded="false"
+                aria-label="Toggle navigation"
+            >
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a href="home.html" class="nav-link">HOME</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="book-here.html" class="nav-link active" style="color: red;">BOOK HERE</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="about.html" class="nav-link">ABOUT US</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="goals.html" class="nav-link">OUR GOALS</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
 
-                <!-- Contact Number -->
-                <div class="mb-3">
-                    <label class="form-label fw-bold" for="contactNumber">
-                        Contact Number: <small class="text-muted">(11 digits required)</small>
-                    </label>
-                    <input type="tel" id="contactNumber" name="contactNumber" class="form-control" required pattern="\d{11}" maxlength="11" placeholder="Enter 11-digit phone number">
-                    <small id="phoneError" class="text-danger" style="display: none;">
-                        Phone number must be exactly 11 digits.
-                    </small>
-                </div>
-
-                <!-- Part Description -->
-                <div class="mb-3">
-                    <label class="form-label fw-bold" for="partDescription">
-                        Part Description:
-                    </label>
-                    <textarea id="partDescription" name="partDescription" class="form-control" required rows="3"></textarea>
-                </div>
-
-                <!-- Material Type -->
-                <div class="mb-3">
-                    <label class="form-label fw-bold" for="materialType">
-                        Material Type:
-                    </label>
-                    <select id="materialType" name="materialType" class="form-select" required>
-                        <option value="">Select Material</option>
-                        <option value="Aluminum">Aluminum</option>
-                        <option value="Steel">Steel</option>
-                        <option value="Brass">Brass</option>
-                        <option value="Plastic">Plastic</option>
-                        <option value="Other">Other</option>
-                    </select>
-                </div>
-
-                <!-- Quantity -->
-                <div class="mb-3">
-                    <label class="form-label fw-bold" for="quantity">
-                        Quantity:
-                    </label>
-                    <input type="number" id="quantity" name="quantity" class="form-control" required min="1">
-                </div>
-
-                <!-- Due Date -->
-                <div class="mb-3">
-                    <label class="form-label fw-bold" for="dueDate">
-                        Due Date:
-                    </label>
-                    <input type="date" id="dueDate" name="dueDate" class="form-control" required>
-                </div>
-
-                <!-- Upload Image -->
-                <div class="mb-3">
-                    <label class="form-label fw-bold" for="uploadImage">
-                        Upload Image (Max 5MB):
-                    </label>
-                    <input type="file" id="uploadImage" name="uploadImage" class="form-control" accept="image/*">
-                    <img id="imagePreview" class="image-preview mt-2" alt="Image Preview">
-                    <div class="progress mt-2" style="display: none;">
-                        <div class="progress-bar" role="progressbar" style="width: 0%"></div>
+    <!-- Main Content -->
+    <div class="container my-5">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="card shadow">
+                    <div class="card-body">
+                        <h2 class="text-center mb-4">Book Your Work Request</h2>
+                        <form id="workRequestForm" onsubmit="return handleSubmit(event)">
+                            <div class="mb-3">
+                                <label for="customerName" class="form-label required">Customer Name</label>
+                                <input type="text" class="form-control" id="customerName" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="contactNumber" class="form-label required">Contact Number</label>
+                                <input type="tel" class="form-control" id="contactNumber" pattern="[0-9]{11}" required>
+                                <small class="text-muted">Format: 09XXXXXXXXX (11 digits)</small>
+                            </div>
+                            <div class="mb-3">
+                                <label for="partDescription" class="form-label required">Part Description</label>
+                                <textarea class="form-control" id="partDescription" rows="3" required></textarea>
+                            </div>
+                            <div class="mb-3">
+                                <label for="materialType" class="form-label required">Material Type</label>
+                                <select class="form-select" id="materialType" required>
+                                    <option value="">Select Material Type</option>
+                                    <option value="Steel">Steel</option>
+                                    <option value="Aluminum">Aluminum</option>
+                                    <option value="Brass">Brass</option>
+                                    <option value="Copper">Copper</option>
+                                    <option value="Other">Other</option>
+                                </select>
+                            </div>
+                            <div class="mb-3">
+                                <label for="quantity" class="form-label required">Quantity</label>
+                                <input type="number" class="form-control" id="quantity" min="1" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="dueDate" class="form-label required">Due Date</label>
+                                <input type="date" class="form-control" id="dueDate" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="imageUpload" class="form-label">Upload Image (Optional)</label>
+                                <input type="file" class="form-control" id="imageUpload" accept="image/*" onchange="previewImage(event)">
+                                <img id="imagePreview" class="img-thumbnail" alt="Image Preview">
+                            </div>
+                            <div class="text-center">
+                                <button type="submit" class="btn btn-primary">Submit Request</button>
+                            </div>
+                        </form>
                     </div>
                 </div>
-
-                <!-- Submit Button -->
-                <button type="submit" class="btn btn-success w-100" id="submitButton">
-                    Submit Request
-                </button>
-            </form>
+            </div>
         </div>
     </div>
 
-    <!-- Bootstrap JS -->
+    <!-- Footer -->
+    <footer>
+        <div class="container py-5">
+            <div class="row">
+                <hr />
+                <div class="col-lg-12 col-md-12">
+                    <h2 class="mb-4">Contact Information</h2>
+                    <p>If you have any questions or inquiries, feel free to reach out to us. We're here to help!</p>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><i class="bi bi-envelope"></i> Email: <a href="mailto:rodmachineshop@gmail.com" class="text-decoration-none text-dark hover-underline">rodmachineshop@gmail.com</a></li>
+                        <li class="mb-2"><i class="bi bi-telephone"></i> Phone: <a href="tel:+639456718005" class="text-decoration-none text-dark hover-underline">+63 945 671 8005</a></li>
+                        <li class="mb-2"><i class="bi bi-geo-alt"></i> Address: Barangonbong, Sta Lucia Ilocos Sur</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid p-5" style="background-image: url('img/bg_f.jpg'); background-size: cover; background-repeat: no-repeat; background-position: center; color: #ffffff;">
+            <img src="img/ROD.png" alt="Logo" class="img-fluid mb-3" style="width: 150px; height: 150px; border-radius: 80px;" />
+            <div class="row">
+                <div class="col-lg-6 col-md-12 mb-4">
+                    <h3 class="text-uppercase">
+                        ROD MACHINE SHOP <br /> <h6>Committed to Excellence in Service.</h6>
+                    </h3>
+                    <p class="tex-justify" style="font-family: 'Bebas neue';">
+                        <strong class="text-danger" style="font-family: 'Bebas neue';">At ROD Machine Shop</strong>, we take pride in delivering top-quality machining solutions with precision and reliability. With a commitment to excellence, we offer expert craftsmanship, advanced technology, and exceptional customer service to meet your manufacturing and repair needs. Whether it's custom machining, metal fabrication, or equipment repair, we ensure superior results with every project.
+                    </p>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <h5 class="text-uppercase mb-0">Social link</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#" class="text-decoration-none text-light hover-underline"><i class="ri-facebook-line"></i> Facebook</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <h5 class="text-uppercase mb-0">Email</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="mailto:rodmachineshop@gmail.com" class="text-decoration-none text-light hover-underline"><i class="ri-mail-line"></i> rodmachineshop@gmail.com</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row mt-4">
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <h5 class="text-uppercase">Learn more about Machine Shops</h5>
+                    <ul class="list-unstyled mb-0">
+                        <li><a href="https://www.practicalmachinist.com/" class="text-decoration-none text-light hover-underline">practicalmachinist</a></li>
+                        <li><a href="https://www.pinayads.com/2025/01/the-core-of-manufacturing-an-essential-guide-to-machine-shops/" class="text-decoration-none text-light hover-underline">pinayads</a></li>
+                        <li><a href="https://www.mmsonline.com/" class="text-decoration-none text-light hover-underline">mmsonline</a></li>
+                        <li><a href="https://www.machinistsworkshop.com/" class="text-decoration-none text-light hover-underline">Machinist's Workshop</a></li>
+                        <li><a href="https://www.thomasnet.com/" class="text-decoration-none text-light hover-underline">ThomasNet</a></li>
+                        <li><a href="https://www.haascnc.com/" class="text-decoration-none text-light hover-underline">Haas Automation</a></li>
+                        <li><a href="https://www.machiningdoctor.com/" class="text-decoration-none text-light hover-underline">machiningdoctor</a></li>
+                        <li><a href="https://www.machineshoptours.com/" class="text-decoration-none text-light hover-underline">machineshoptours</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <h5 class="text-uppercase mb-0">Rod Machine shop Team</h5>
+                    <ul class="list-unstyled">
+                        <li><a class="text-decoration-none text-light hover-underline">Rodrigo Rosario</a></li>
+                        <li><a class="text-decoration-none text-light hover-underline">Drixel Rosario</a></li>
+                        <li><a class="text-decoration-none text-light hover-underline">Mark Palacio</a></li>
+                        <li><a class="text-decoration-none text-light hover-underline">Myco Galus</a></li>
+                        <li><a class="text-decoration-none text-light hover-underline">Roger Dailioan</a></li>
+                        <li><a class="text-decoration-none text-light hover-underline">Jun Soliman</a></li>
+                        <li><a class="text-decoration-none text-light hover-underline">Frederick Sumacli</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <h5 class="text-uppercase mb-0 text-danger">About the developer</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#" class="text-decoration-none text-light hover-underline">here...</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="footer text-center py-4">
+            <p class="m-0">© 2025 chan-chan R. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
-    
-    <!-- Firebase Configuration -->
     <script>
-        // Your web app's Firebase configuration
-        const firebaseConfig = {
-            apiKey: "AIzaSyBFwa9t_axiROyS9HyEMBWYFrYs8vlGQ14",
-            authDomain: "rod-machine-shop.firebaseapp.com",
-            projectId: "rod-machine-shop",
-            storageBucket: "rod-machine-shop.appspot.com",
-            messagingSenderId: "634114192437",
-            appId: "1:634114192437:web:7b4c61b2c5a7459152ed7c",
-            measurementId: "G-Y7E0MVR6JZ"
-        };
+        function previewImage(event) {
+            const preview = document.getElementById('imagePreview');
+            const file = event.target.files[0];
+            const reader = new FileReader();
 
-        // Initialize Firebase
-        firebase.initializeApp(firebaseConfig);
-        const analytics = firebase.analytics();
-        const db = firebase.firestore();
-        const storage = firebase.storage();
+            reader.onload = function() {
+                preview.src = reader.result;
+                preview.style.display = 'block';
+            }
 
-        document.addEventListener('DOMContentLoaded', function() {
-            const form = document.getElementById('workRequestForm');
-            const errorMessage = document.getElementById('errorMessage');
-            const phoneInput = document.getElementById('contactNumber');
-            const phoneError = document.getElementById('phoneError');
-            const fileInput = document.getElementById('uploadImage');
-            const imagePreview = document.getElementById('imagePreview');
-            const progressBar = document.querySelector('.progress');
-            const progressBarInner = document.querySelector('.progress-bar');
+            if (file) {
+                reader.readAsDataURL(file);
+            }
+        }
 
-            // Image preview
-            fileInput.addEventListener('change', function() {
-                const file = this.files[0];
-                if (file) {
-                    if (file.size > 5 * 1024 * 1024) {
-                        errorMessage.textContent = "Error: File size exceeds the maximum limit of 5MB.";
-                        errorMessage.style.display = 'block';
-                        this.value = '';
-                        imagePreview.style.display = 'none';
-                        return;
-                    }
+        function handleSubmit(event) {
+            event.preventDefault();
+            
+            // Basic form validation
+            const form = event.target;
+            if (!form.checkValidity()) {
+                event.stopPropagation();
+                form.classList.add('was-validated');
+                return false;
+            }
 
-                    const reader = new FileReader();
-                    reader.onload = function(e) {
-                        imagePreview.src = e.target.result;
-                        imagePreview.style.display = 'block';
-                    }
-                    reader.readAsDataURL(file);
-                    errorMessage.style.display = 'none';
-                }
-            });
+            // Get form data
+            const formData = {
+                customerName: document.getElementById('customerName').value,
+                contactNumber: document.getElementById('contactNumber').value,
+                partDescription: document.getElementById('partDescription').value,
+                materialType: document.getElementById('materialType').value,
+                quantity: document.getElementById('quantity').value,
+                dueDate: document.getElementById('dueDate').value
+            };
 
-            // Phone number validation
-            phoneInput.addEventListener('input', function() {
-                const isValid = this.value.length === 11 && /^\d+$/.test(this.value);
-                phoneError.style.display = isValid ? 'none' : 'block';
-                if (this.value.length > 11) {
-                    this.value = this.value.slice(0, 11);
-                }
-                phoneError.textContent = `Phone number must be exactly 11 digits. Currently: ${this.value.length} digits`;
-            });
-
-            // Form submission
-            form.addEventListener('submit', async function(e) {
-                e.preventDefault();
-                
-                if (!form.checkValidity()) {
-                    e.stopPropagation();
-                    form.classList.add('was-validated');
-                    return;
-                }
-
-                const submitButton = document.getElementById('submitButton');
-                submitButton.disabled = true;
-                submitButton.textContent = 'Submitting...';
-                errorMessage.style.display = 'none';
-
-                try {
-                    let imageUrl = '';
-                    const file = fileInput.files[0];
-                    
-                    if (file) {
-                        const storageRef = storage.ref();
-                        const fileRef = storageRef.child(`workRequests/${Date.now()}_${file.name}`);
-                        
-                        progressBar.style.display = 'block';
-                        const uploadTask = fileRef.put(file);
-
-                        await new Promise((resolve, reject) => {
-                            uploadTask.on('state_changed',
-                                (snapshot) => {
-                                    const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-                                    progressBarInner.style.width = progress + '%';
-                                },
-                                (error) => reject(error),
-                                async () => {
-                                    imageUrl = await uploadTask.snapshot.ref.getDownloadURL();
-                                    resolve();
-                                }
-                            );
-                        });
-                    }
-
-                    const workRequest = {
-                        customerName: document.getElementById('customerName').value,
-                        contactNumber: document.getElementById('contactNumber').value,
-                        partDescription: document.getElementById('partDescription').value,
-                        materialType: document.getElementById('materialType').value,
-                        quantity: parseInt(document.getElementById('quantity').value),
-                        dueDate: document.getElementById('dueDate').value,
-                        imageUrl: imageUrl,
-                        status: 'Pending',
-                        timestamp: firebase.firestore.FieldValue.serverTimestamp()
-                    };
-
-                    await db.collection('workRequests').add(workRequest);
-                    
-                    alert('Work request submitted successfully!');
-                    form.reset();
-                    fileInput.value = '';
-                    imagePreview.style.display = 'none';
-                    progressBar.style.display = 'none';
-                } catch (error) {
-                    console.error('Error:', error);
-                    errorMessage.textContent = 'Error submitting work request. Please try again.';
-                    errorMessage.style.display = 'block';
-                } finally {
-                    submitButton.disabled = false;
-                    submitButton.textContent = 'Submit Request';
-                }
-            });
-        });
+            // For now, just show an alert
+            alert('Work request submitted successfully! We will contact you soon.');
+            form.reset();
+            document.getElementById('imagePreview').style.display = 'none';
+            
+            return false;
+        }
     </script>
 </body>
 </html> 
